@@ -22,7 +22,7 @@ s_df = pd.DataFrame(stock_symbols, columns=['stock_symbol'])
 l_list = s_df.values.tolist()
 
 # define driver 
-driver = webdriver.Chrome('/Users/afrankenreider/Downloads/chromedriver')
+driver = webdriver.Chrome('file path for driver here')
 
 def call_web():
     driver.get('https://www.google.com/finance')
@@ -46,7 +46,7 @@ for l in l_list:
         search_form.send_keys(Keys.ENTER)
 
         # find current stock price
-        stock_price = WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div[3]/main/div[2]/c-wiz/div/div[1]/div[1]/div/div[1]/div[1]/div/div[1]/div/span/div/div')))
+        stock_price = WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div[3]/main/div[2]/c-wiz/div/div[1]/div[1]/div/div[1]/div[1]/div/div[1]/div/span/div/div')))
         print("Current stock price for $"+symbol+" at "+current_time+" is -> ",stock_price.text)
         s_str = str(stock_price.text)
 
